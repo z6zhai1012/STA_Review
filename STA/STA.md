@@ -1,0 +1,49 @@
+# STA
+
+## TCL Commands
+
+- llength
+  - fine number of objects in a list
+- get_ports portsName
+  - return ports object in design
+  - Examples:
+    - get_ports SPI
+    - get_ports *
+    - get_ports C*
+- get_cells cellsName
+  - return cell instances in design
+  - Examples:
+    - get_cells U4
+    - get_cells *
+    - get_cells *3
+- get_nets netsName
+  - return net object in design
+  - Examples:
+    - get_nets INV*
+    - get_nets *
+    - llength [get_object_name [get_nets *]]
+    - sizeof_collection [get_nets *]
+- get_pins pinsName
+  - return pin object in design
+  - Examples:
+    - get_pins */Z
+    - get_pins */Q *
+- get_attribute
+  - Examples:
+    - get_attribute [get_cells -h U3] ref_name
+    - get_attribute [get_pins U2/A] owner_net
+    - get_attribute [get_ports A] direction
+    - get_attribute [get_ports OUT[1]] direction
+    - get_attribute [get_nets INV0] full_name
+      - get_object_name [get_nets INV0]
+- get_* -f
+  - Examples:
+    - get_ports * -f "direction == out"
+    - get_ports * -f "direction == in"
+    - get_cells * -f "ref_name == INV"
+- get_* [object] -of
+  - Examples:
+    - get_nets -of [get_port A]
+    - get_net -of [get_pin U2/A]
+    - get_pin -of [get_net INV1]
+    - get_pins -of [get_cell U4]
